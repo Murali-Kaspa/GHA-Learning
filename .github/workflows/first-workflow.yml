@@ -1,0 +1,12 @@
+name: First-Workflow
+on: workflow_dispatch
+jobs:
+  first-job:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Greeting Message
+        run: "Hello Murali"
+      - name: Exit Message
+        run: "Have a good day Bye..."
+    
+    
