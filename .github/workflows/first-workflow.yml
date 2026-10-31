@@ -8,5 +8,9 @@ jobs:
         run: echo "Hello Murali"
       - name: Exit Message
         run: echo "Have a good day Bye..."
+      - name: multiple commands
+        run: |
+            echo "First command"
+            echo "Second Command"
     
     
