@@ -5,8 +5,8 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Greeting Message
-        run: "Hello Murali"
+        run: echo "Hello Murali"
       - name: Exit Message
-        run: "Have a good day Bye..."
+        run: echo "Have a good day Bye..."
     
     
