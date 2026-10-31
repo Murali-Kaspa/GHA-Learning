@@ -1,0 +1,25 @@
+name: second workflow
+on: 
+  push:
+    branches: 
+      - main
+  workflow_dispatch:
+jobs:
+  firstjob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: greet
+        run: echo "Hey Murali"
+      - name: bye
+        run: |
+          echo "Hey"
+          echo "Hello"
+  secondjob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: greet from job2
+        run: echo "Hey Murali Krishna"
+      - name: bye
+        run: |
+          echo "Tata"
+          echo "ByeBye"
