@@ -1,0 +1,12 @@
+name: output-practise
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step-level-output
+        id: version
+        run: echo "app_version=0.1.10">>$APP_VERSION
+      - name: Display Version
+        run: echo "Current Version is {{ steps.version.outputs.app_version }}"
+      
