@@ -6,6 +6,6 @@ jobs:
     steps:
       - name: step-level-output
         id: version
-        run: echo "app_version=0.1.10">>$GITHUB_VERSION
+        run: echo "app_version=0.1.10">>$GITHUB_OUTPUT
       - name: Display Version
         run: echo "Current Version is ${{ steps.version.outputs.app_version }}"
