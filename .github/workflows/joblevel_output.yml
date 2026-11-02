@@ -1,4 +1,4 @@
-name: output-practise
+name: joblevel-output-practise
 on: [push, workflow_dispatch]
 
 jobs:
