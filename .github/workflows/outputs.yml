@@ -2,7 +2,7 @@ name: output-practise
 on: [push, workflow_dispatch]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: step-level-output
         id: version
