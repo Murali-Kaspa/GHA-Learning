@@ -1,0 +1,19 @@
+name: Reusable workflow sample file
+on: workflow_dispatch
+jobs:
+  Deployment:
+    uses: ./.github/workflows/reusable.yml
+  Success_Message:
+    runs-on: ubuntu-latest
+    needs: Deployment
+    if: success()
+    steps:
+      - name: Display Success
+        run: echo "Deployment is Success"
+  Failure_Message:
+    runs-on: ubuntu-latest
+    needs: Deployment
+    if: failure()
+    steps:
+      - name: Display Failed Message
+        run: echo "Deployment is Failed"
