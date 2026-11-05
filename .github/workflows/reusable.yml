@@ -1,0 +1,33 @@
+name: Parent yml for reusbale workflows
+on: workflow_call
+env:
+  Application_Name: "Watsapp"
+  
+jobs:
+  Development:
+    runs-on: ubuntu-latest
+    env:
+      environment: "Development"
+    steps:
+      - name: Dev Status
+        run: |
+          echo "The Application ${{ env.Application_Name }} is deployed to ${{ env.environment }}"
+  Testing:
+    runs-on: ubuntu-latest
+    needs: Development
+    env:
+      environment: Testing
+    steps:
+      - name: Test Status
+        run:
+          echo "The Application ${{ env.Application_Name }} is deployed to ${{ env.environment }}"
+  Staging:
+    runs-on: ubuntu-latest
+    needs: Testing
+    env:
+      environment: "Stage"
+    steps:
+      - name: Staging Status
+        run: |
+          echo "The Application ${{ env.Application_Name }} is deployed to ${{ env.environment }}"
+    
