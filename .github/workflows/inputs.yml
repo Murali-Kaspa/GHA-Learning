@@ -1,0 +1,51 @@
+name: Inputs Practise
+on: 
+  workflow_dispatch:
+    inputs:
+      Application:
+        description: "Please Select your Application"
+        required: true
+        type: choice
+        options:
+          - PhonePe
+          - CRED
+          - Paytm
+          - GooglePay
+          - ApplePay
+      Environment:
+        description: "Please select your input"
+        type: choice
+        required: true
+        options:
+          - DEV
+          - SIT
+          - UAT
+          - SVP
+          - PROD
+      DR:
+        description: "You want it to Deploy on DR Server Also ?"
+        type: boolean
+        default: true
+        required: true
+env:
+  Name: "Murali"
+        
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Selected Application
+        run: |
+          echo "Hey ${{ env.Name }}, We are going to deploy on ${{ inputs.Application }}"
+          
+      - name: Selected Environment
+        run: echo "The Selected Application is ${{ inputs.Application }} and we are going to deploy it to ${{ inputs.Environment }}"
+      
+      - name: DR Server
+        if: ${{ inputs.DR == true }}
+        run: echo "The Application is deployed to ${{ inputs.DR }} also.
+        
+      - name: Skipping DR Server
+        if: ${{ inputs.DR == false }}
+        run: echo "The Application is not deployed to ${{ inputs.DR }}.. 
+    
