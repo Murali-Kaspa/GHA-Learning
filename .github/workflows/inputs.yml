@@ -36,16 +36,16 @@ jobs:
     steps:
       - name: Selected Application
         run: |
-          echo "Hey ${{ env.Name }}, We are going to deploy on ${{ inputs.Application }}"
+          echo "Hey ${{ env.Name }}, We are going to deploy on ${{ inputs.Application }} Application"
           
       - name: Selected Environment
-        run: echo "The Selected Application is ${{ inputs.Application }} and we are going to deploy it to ${{ inputs.Environment }}"
+        run: echo "The Selected Application is ${{ inputs.Application }} and we are going to deploy it to ${{ inputs.Environment }} Environment"
       
       - name: DR Server
         if: ${{ inputs.DR == true }}
-        run: echo "The Application is deployed to ${{ inputs.DR }} also.
+        run: echo "The Application is deployed to ${{ inputs.DR }} also.."
         
       - name: Skipping DR Server
         if: ${{ inputs.DR == false }}
-        run: echo "The Application is not deployed to ${{ inputs.DR }}.. 
+        run: echo "The Application is not deployed to ${{ inputs.DR }}.."
     
