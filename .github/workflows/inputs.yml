@@ -43,9 +43,9 @@ jobs:
       
       - name: DR Server
         if: ${{ inputs.DR == true }}
-        run: echo "The Application is deployed to ${{ inputs.DR }} also.."
+        run: echo "Application is Deployed to DR"
         
       - name: Skipping DR Server
         if: ${{ inputs.DR == false }}
-        run: echo "The Application is not deployed to ${{ inputs.DR }}.."
+        run: echo "The Application is not deployed to DR."
     
