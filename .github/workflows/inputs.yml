@@ -44,6 +44,7 @@ jobs:
           echo "Manual Approval is  Required for the selected Branch ${{ env.Branch }}"
         
   Build:
+    needs: Branch-Validation
     runs-on: ubuntu-22.04
     steps:
       - name: Selected Application
@@ -64,7 +65,7 @@ jobs:
         if: ${{ inputs.DR == false }}
         run: echo "The Application is not deployed to DR."
   Shell:
-    needs: Build
+    needs: [Branch-Validation, Build]
     runs-on: ubuntu-22.04
     steps:
      - name: checkout code
