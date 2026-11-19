@@ -1,5 +1,8 @@
 name: Inputs Practise
-on: 
+on:
+  push:
+    branches:
+       - DEV
   workflow_dispatch:
     inputs:
       Application:
@@ -51,4 +54,11 @@ jobs:
       - name: Skipping DR Server
         if: ${{ inputs.DR == false }}
         run: echo "The Application is not deployed to DR."
+  Shell:
+    needs: Build
+    runs-on: ubuntu-22.04
+    steps:
+     - name: Execute Shell Script
+       run: ./Scripts/Welcome.sh
+    
     
