@@ -41,7 +41,7 @@ jobs:
       - name: Branch Approval
         if: ${{ env.Branch != 'DEV' || env.Branch != 'SIT' }}
         run:
-          echo "Manual Approval is  Required for the selected Branch ${{ env.Branch }}
+          echo "Manual Approval is  Required for the selected Branch ${{ env.Branch }}"
         
   Build:
     runs-on: ubuntu-22.04
