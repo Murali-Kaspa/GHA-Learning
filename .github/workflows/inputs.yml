@@ -25,7 +25,7 @@ on:
       DR:
         description: "You want it to Deploy on DR Server Also ?"
         type: boolean
-        default: true
+        default: false
         required: true
 env:
   Name: "Murali"
@@ -42,7 +42,7 @@ jobs:
         run: echo "The Selected Application is ${{ inputs.Application }} and we are going to deploy it to ${{ inputs.Environment }} Environment"
       
       - name: DR Server
-        if: ${{ inputs.DR == true }}
+        if: ${{ inputs.DR }}
         run: echo "Application is Deployed to DR"
         
       - name: Printing Current Branch
