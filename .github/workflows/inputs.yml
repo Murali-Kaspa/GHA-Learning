@@ -60,7 +60,11 @@ jobs:
     steps:
      - name: checkout code
        uses: actions/checkout@v4
-     - name: Execute Shell Script
-       run: ./Scripts/Welcome.sh
+     - name: Permission to execute script
+       run: |
+       ls -la
+       chmod +x ./Scripts/Welcome.sh
+       ls -la
+       ./Scripts/Welcome.sh
     
     
