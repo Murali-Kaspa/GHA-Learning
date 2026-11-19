@@ -32,8 +32,17 @@ on:
         required: true
 env:
   Name: "Murali"
+  Branch: ${{ github.ref_name }}
         
 jobs:
+  Branch-Validation:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Branch Approval
+        if: ${{ env.Branch != 'DEV' || env.Branch != 'SIT' }}
+        run:
+          echo "Manual Approval is  Required for the selected Branch ${{ env.Branch }}
+        
   Build:
     runs-on: ubuntu-22.04
     steps:
