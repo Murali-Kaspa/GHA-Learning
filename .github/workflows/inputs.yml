@@ -58,6 +58,8 @@ jobs:
     needs: Build
     runs-on: ubuntu-22.04
     steps:
+     - name: checkout code
+       uses: actions/checkout@v4
      - name: Execute Shell Script
        run: ./Scripts/Welcome.sh
     
