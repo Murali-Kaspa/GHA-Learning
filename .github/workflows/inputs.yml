@@ -32,7 +32,7 @@ on:
         required: true
 env:
   Name: "Murali"
-  Branch: ${{ github.ref_name }}
+  Branch: ${{ inputs.Environment }}
         
 jobs:
   Branch-Validation:
