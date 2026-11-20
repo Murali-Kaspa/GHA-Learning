@@ -1,0 +1,68 @@
+name: Reusable Deployment Workflow
+
+on:
+  workflow_call:
+    inputs:
+      application:
+        description: "Application Name"
+        required: true
+        type: string
+
+      environment:
+        description: "Deployment Environment"
+        required: true
+        type: string
+
+      region:
+        description: "AWS Region"
+        required: true
+        type: string
+
+      deploy_database:
+        description: "Whether to deploy database"
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  application-deployment:
+    name: Deploy Application
+
+    runs-on: ubuntu-latest
+
+    environment: ${{ inputs.environment }}
+
+    steps:
+      - name: Display Deployment Details
+        run: |
+          echo "Application: ${{ inputs.application }}"
+          echo "Environment: ${{ inputs.environment }}"
+          echo "Region: ${{ inputs.region }}"
+
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Deploy Application
+        run: |
+          echo "Deploying ${{ inputs.application }}"
+          echo "Environment: ${{ inputs.environment }}"
+          echo "Region: ${{ inputs.region }}"
+
+      - name: Deployment Status
+        run: echo "Application deployment completed!"
+
+  database-deployment:
+    name: Deploy Database
+
+    runs-on: ubuntu-latest
+
+    needs: application-deployment
+
+    if: ${{ inputs.deploy_database }}
+
+    steps:
+      - name: Deploy Database
+        run: |
+          echo "Database deployment started"
+          echo "Application: ${{ inputs.application }}"
+          echo "Environment: ${{ inputs.environment }}"
