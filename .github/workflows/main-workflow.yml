@@ -1,0 +1,51 @@
+name: Main Deployment Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      application:
+        description: "Select Application"
+        required: true
+        type: choice
+        options:
+          - PaymentApp
+          - BankingApp
+          - RetailApp
+
+      environment:
+        description: "Select Environment"
+        required: true
+        type: choice
+        options:
+          - DEV
+          - SIT
+          - UAT
+          - PROD
+
+      region:
+        description: "Select AWS Region"
+        required: true
+        type: choice
+        options:
+          - ap-south-1
+          - us-east-1
+
+      deploy_database:
+        description: "Deploy Database?"
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  deployment:
+    name: Call Reusable Workflow
+
+    uses: ./.github/workflows/reusable-deploy.yml
+
+    with:
+      application: ${{ inputs.application }}
+      environment: ${{ inputs.environment }}
+      region: ${{ inputs.region }}
+      deploy_database: ${{ inputs.deploy_database }}
+
+    secrets: inherit
