@@ -24,11 +24,8 @@ on:
 
       region:
         description: "Select AWS Region"
-        required: true
-        type: choice
-        options:
-          - ap-south-1
-          - us-east-1
+        required: false
+        type: string
 
       deploy_database:
         description: "Deploy Database?"
