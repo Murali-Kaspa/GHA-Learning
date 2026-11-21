@@ -12,5 +12,14 @@ jobs:
         run: |
             echo "First command"
             echo "Second Command"
+  Shell-Job:
+    runs-on: ubuntu-22.04
+    needs: first-job
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Execute shell
+        run: bash ./.github/workflows/Scripts/welcome.sh
+    
     
     
