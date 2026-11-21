@@ -19,7 +19,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Execute shell
-        run: bash ./.github/workflows/Scripts/welcome.sh
+        run: bash Scripts/welcome.sh
     
     
     
